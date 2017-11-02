@@ -5,9 +5,7 @@ android:
   components:
     - tools
     - platform-tools
-    - tools
-    
-
+    - tools  
     # The BuildTools version used by your project
     - build-tools-26.0.1
 
@@ -15,7 +13,7 @@ android:
     - android-26
 
   licenses:
-    - 'android-sdk-preview-license-52d11cd2'
+    - 'android-sdk-preview-license-.*'
     - 'android-sdk-license-.+'
     - 'google-gdk-license-.+'
 before_cache:
@@ -28,5 +26,13 @@ cache:
     - $HOME/.android/build-cache
 before_install:
   - chmod +x ./build.sh
+  
+install:
+  - echo y | android update sdk -u -a -t tools
+  - echo y | android update sdk -u -a -t platform-tools
+  - echo y | android update sdk -u -a -t build-tools-26.0.1
+  - echo y | android update sdk -u -a -t android-26
+  - echo y | android update sdk -u -a -t extra-google-m2repository
+  - echo y | android update sdk -u -a -t extra-android-m2repository
  
 script: ./build.sh

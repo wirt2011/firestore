@@ -13,7 +13,8 @@ cache:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
     - $HOME/.android/build-cache
-
+before_install:
+  - chmod +x ./build.sh
 before_script:
   - echo y | ${ANDROID_HOME}tools/bin/sdkmanager --channel=3 "tools" "platform-tools" "build-tools;26.0.1" "platforms;android-26" "extras;google;m2repository"
 script: ./build.sh
